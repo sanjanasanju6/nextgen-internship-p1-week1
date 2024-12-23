@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); 
+    const [password, setPassword] = useState(''); 
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
@@ -44,7 +43,7 @@ const Login = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
             </form>
-            {error && <p className="text-danger mt-3">{error}</p>} {/* Display error message */}
+        
             <p>Don't have an account? <a href="/register">Register</a></p>
         </div>
     );
