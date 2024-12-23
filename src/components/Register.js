@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+        const [password, setPassword] = useState('');  
     const handleRegister = async (e) => {
         e.preventDefault();
         // setError(''); // Clear any previous errors
@@ -59,7 +58,6 @@ const Register = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Register</button>
             </form>
-            {error && <p className="text-danger mt-3">{error}</p>} {/* Display error message */}
             <p>Already have an account? <a href="/">Login</a></p>
         </div>
     );
