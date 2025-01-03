@@ -1,52 +1,32 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
-const Navbar = () => {
-    const navigate = useNavigate();
-    const userString = localStorage.getItem('user');
-    const user = userString?JSON.parse(userString):null;
-    console.log(user)
+function Navbar() {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container-fluid">
+        <Link to="/" className="navbar-brand">FusionWork Collab</Link>
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link to="/chat" className="nav-link">Saved Documents</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/create" className="nav-link">Create Document</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/edit" className="nav-link">Edit Document</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/collaborate" className="nav-link">Collaborate</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
-    const handleLogout = () => {
-        // Remove user data from local storage
-        localStorage.removeItem('user');
-        // Redirect to landing page
-        navigate('/');
-    };
+export default Navbar;
 
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <Link className="navbar-brand" to="/">CollabTool</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav me-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                        </li>
-                    </ul>
-                    {user ? (
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <button className="btn btn-link nav-link" onClick={handleLogout}>{user.username}  Logout</button>
-                            </li>
-                        </ul>
-                    ) : (
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/login">Login</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/register">Register</Link>
-                            </li>
-                        </ul>
-                    )}
-                </div>
-            </div>
-        </nav>
-    );
-};
-
-export default Navbar;
